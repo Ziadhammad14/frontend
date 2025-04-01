@@ -1,0 +1,8 @@
+sudo: required 
+service:
+  - docker 
+
+before_install:
+  - docker build -t Ziadhammad14/frontend -f Dockerfile.dev . 
+script:
+  - docker run Ziadhammad14/frontend npm run test -- --coverage 
