@@ -1,23 +1,23 @@
+def gv
+
 pipeline {
-  agent any
-  tools {
-    gradle 'gradle'
-  }
-  stages {
-    stage("run frontend") {
-      steps {
-        echo 'executing yarn...'
-        nodejs('NodeJS') {
-          sh 'yarn install'
+    agent any
+    stages {
+        stage("build") {
+            steps {
+                echo 'building application...'
+            }
         }
-      }
-    }
-    stage("run backend") {
-      steps {
-        echo 'executing gradle...'
-          sh './gradlew -v'
         
-      }
-    }
-  }
+        stage("test") {
+            steps {
+                echo 'testing application...'
+            }
+        }
+        stage("deploy") {
+            steps {
+                echo 'deploying application...'
+            }
+        }
+    }   
 }
